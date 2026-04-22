@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ brand.name }}</title>
+</head>
+<body>
+
+    <h1>{{ brand.name }}</h1>
+
+    {% for car in cars %}
+        <p>
+            <a href="{% url 'car_detail' car.id %}">{{ car.name }}</a>
+        </p>
+    {% empty %}
+        <p>Mashina yo'q</p>
+    {% endfor %}
+
+    <a href="{% url 'home' %}">Ortga</a>
+
+</body>
+</html>

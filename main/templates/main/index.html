@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+
+    <h1>Brandlar</h1>
+
+    {% for brand in brands %}
+        <a href="{% url 'brand_car' brand.id %}">{{ brand.name }}</a>&nbsp;&nbsp;
+    {% endfor %}
+
+    <hr>
+
+    <h1>Barcha mashinalar</h1>
+
+    <ul>
+        {% for car in cars %}
+            <li>
+                <a href="{% url 'car_detail' car.id %}">
+                    {{ car.name }}
+                </a>
+            </li>
+        {% empty %}
+            <li>Mashinalar yo‘q</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

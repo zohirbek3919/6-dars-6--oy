@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ car.name }}</title>
+</head>
+<body>
+
+    <h1>{{ car.name }}</h1>
+
+    <p>Name: {{ car.name }}</p>
+    <p>Color: {{ car.color }}</p>
+    <p>Type: {{ car.type }}</p>
+    <p>Price: {{ car.price }}</p>
+    <p>Brand: {{ car.brand.name }}</p>
+
+    {% if car.image %}
+        <img src="{{ car.image.url }}" alt="{{ car.name }}" width="300">
+    {% endif %}
+
+    <br><br>
+    <a href="{% url 'home' %}">⬅️ Ortga</a>
+
+</body>
+</html>
