@@ -10,7 +10,7 @@
 
     {% for car in cars %}
         <p>
-            <a href="{% url 'car_detail' car.id %}">{{ car.name }}</a>
+            <a href="{% url 'detail' car.id %}">{{ car.name }}</a>
         </p>
     {% empty %}
         <p>Mashina yo'q</p>

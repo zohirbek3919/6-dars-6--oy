@@ -3,30 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
-    <h1>Brandlar</h1>
+<div class="container">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}">Avto salon</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    {% for brand in brands %}
-        <a href="{% url 'brand_car' brand.id %}">{{ brand.name }}</a>&nbsp;&nbsp;
-    {% endfor %}
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Home</a>
+          </li>
 
-    <hr>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
 
-    <h1>Barcha mashinalar</h1>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+            </ul>
+          </li>
+        </ul>
 
-    <ul>
-        {% for car in cars %}
-            <li>
-                <a href="{% url 'car_detail' car.id %}">
-                    {{ car.name }}
-                </a>
-            </li>
-        {% empty %}
-            <li>Mashinalar yo‘q</li>
-        {% endfor %}
-    </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search"/>
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+</nav>
+
+<div class="mt-5 d-flex justify-content-between">
+    <div class="col-3">
+        <div class="list-group">
+            {% for brand in brands %}
+            <a href="{% url 'brand_car' brand.id %}" class="list-group-item list-group-item-action">
+                {{ brand.name }}
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="col-8">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for car in cars %}
+            <div class="col">
+                <div class="card h-100">
+                    <a href="{% url 'detail' car.id %}">
+                      {% if car.image %}
+                      <img src="{{ car.image.url }}" class="card-img-top" alt="...">
+                      {% endif %}
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ car.name }}</h5>
+                        <p class="card-text">{{ car.text }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-body-secondary">{{ car.price }}</small>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

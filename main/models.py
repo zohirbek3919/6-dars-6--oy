@@ -11,11 +11,11 @@ class Brand(models.Model):
 
 
 class Car(models.Model):
-    brand = models.ForeignKey(Brand, on_delete=models.CASCADE, related_name='cars')
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     name = models.CharField(max_length=150)
+    text = models.CharField(max_length=150)
     color = models.CharField(max_length=150)
     image = models.ImageField(upload_to='images/', blank=True, null=True)
-    type = models.CharField(max_length=150)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     
     def __str__(self):

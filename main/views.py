@@ -11,6 +11,7 @@ def home(request):
 def brand_car(request, brand_id):
     brand = Brand.objects.get(id=brand_id)
     cars = Car.objects.filter(brand_id=brand_id)
+
     return render(request, 'main/brand_cars.html', {
         'brand': brand,
         'cars': cars
