@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ brand.name }}</title>
+    <title>{{ category.name }}</title>
 </head>
 <body>
 
-    <h1>{{ brand.name }}</h1>
+    <h1>{{ category.name }}</h1>
 
-    {% for car in cars %}
+    {% for new in news %}
         <p>
-            <a href="{% url 'detail' car.id %}">{{ car.name }}</a>
+            <a href="{% url 'detail' new.id %}">{{ new.type }}</a>
         </p>
     {% empty %}
-        <p>Mashina yo'q</p>
+        <p>Yangilik yo'q</p>
     {% endfor %}
 
     <a href="{% url 'home' %}">Ortga</a>

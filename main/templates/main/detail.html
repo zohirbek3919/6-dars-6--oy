@@ -1,25 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ car.name }}</title>
-</head>
-<body>
+{% extends 'base.html'%}
 
-    <h1>{{ car.name }}</h1>
+{% block content %}
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for new in news %}
+  <div class="col">
+      <div class="card h-100">
 
-    <p>Name: {{ car.name }}</p>
-    <p>Color: {{ car.color }}</p>
-    <p>Type: {{ car.type }}</p>
-    <p>Price: {{ car.price }}</p>
-    <p>Brand: {{ car.brand.name }}</p>
+          {% if new.image %}
+          <img src="{{ new.image.url }}" class="card-img-top" style="height: 220px; object-fit: cover;">
+          {% else %}
+          <img src="https://www.shutterstock.com/image-vector/image-not-found-failure-network-260nw-2330163829.jpg" class="card-img-top" style="height: 220px; object-fit: cover;">
+          {% endif %}
 
-    {% if car.image %}
-        <img src="{{ car.image.url }}" alt="{{ car.name }}" width="300">
-    {% endif %}
+          <div class="card-body">
+              <h5 class="card-title">{{ new.type }}</h5>
+              <p class="card-text">{{ new.text|linebreaksbr }}</p>
+          </div>
 
-    <br><br>
-    <a href="{% url 'home' %}">⬅️ Ortga</a>
+          <div class="card-footer">
+              <small class="text-muted">{{ new.author }}</small>
+          </div>
 
-</body>
-</html>
+      </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock content %}
